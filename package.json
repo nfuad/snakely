@@ -1,11 +1,19 @@
 {
-  "name": "snake-game",
-  "version": "0.1.0",
-  "private": true,
+  "name": "snakely",
+  "description": "A very simple snake game.",
+  "version": "0.0.1",
+  "private": false,
+  "readme": "https://github.com/nfuad/snakely",
+  "author": {
+    "name": "Nafis Fuad",
+    "email": "fuadbd14@gmail.com",
+    "url": "https://nafis.co"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "now --prod"
   },
   "dependencies": {
     "next": "9.1.6",
