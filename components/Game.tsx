@@ -1,141 +1,126 @@
-import React, { Component } from 'react'
-import Snake from './Snake'
-import Food from './Food'
+import * as React from 'react'
+import useInterval from 'react-useinterval'
 
-const getRandomCoordinates = () => {
-  let min = 1
-  let max = 98
-  let x = Math.floor((Math.random() * (max - min + 1) + min) / 2) * 2
-  let y = Math.floor((Math.random() * (max - min + 1) + min) / 2) * 2
-  return [x, y]
-}
+// custom components
+import Board from './Board'
 
+// helper functions
+import getRandomCoordinates from '../utils/getRandomCoordinates'
+
+// constants
+import DIRECTION from '../constants/direction'
+
+// initial state of the game
 const initialState = {
-  food: getRandomCoordinates(),
+  food: getRandomCoordinates,
   speed: 200,
-  direction: 'RIGHT',
+  direction: DIRECTION.RIGHT,
   snakeDots: [
     [0, 0],
     [2, 0]
-  ]
+  ],
+  gameOver: false
 }
 
-class App extends Component {
-  state = initialState
+export default () => {
+  const [food, setFood] = React.useState(initialState.food)
+  const [speed, setSpeed] = React.useState(initialState.speed)
+  const [gameOver, setGameOver] = React.useState(initialState.gameOver)
+  const [direction, setDirection] = React.useState(initialState.direction)
+  const [snakeDots, setSnakeDots] = React.useState(initialState.snakeDots)
 
-  componentDidMount() {
-    setInterval(this.moveSnake, this.state.speed)
-    document.onkeydown = this.onKeyDown
-  }
+  React.useEffect(() => {
+    document.onkeydown = onKeyDown
+    onOutOfBounds()
+    onCollapse()
+    onEat()
+  })
 
-  componentDidUpdate() {
-    this.checkIfOutOfBorders()
-    this.checkIfCollapsed()
-    this.checkIfEat()
-  }
-
-  onKeyDown = (e) => {
+  const onKeyDown = (e) => {
     e = e || window.event
     switch (e.keyCode) {
       case 38:
-        this.setState({ direction: 'UP' })
+        setDirection(DIRECTION.UP)
         break
       case 40:
-        this.setState({ direction: 'DOWN' })
+        setDirection(DIRECTION.DOWN)
         break
       case 37:
-        this.setState({ direction: 'LEFT' })
+        setDirection(DIRECTION.LEFT)
         break
       case 39:
-        this.setState({ direction: 'RIGHT' })
+        setDirection(DIRECTION.RIGHT)
         break
     }
   }
 
-  moveSnake = () => {
-    let dots = [...this.state.snakeDots]
+  const moveSnake = () => {
+    let dots = [...snakeDots]
     let head = dots[dots.length - 1]
-
-    switch (this.state.direction) {
-      case 'RIGHT':
+    switch (direction) {
+      case DIRECTION.RIGHT:
         head = [head[0] + 2, head[1]]
         break
-      case 'LEFT':
+      case DIRECTION.LEFT:
         head = [head[0] - 2, head[1]]
         break
-      case 'DOWN':
+      case DIRECTION.DOWN:
         head = [head[0], head[1] + 2]
         break
-      case 'UP':
+      case DIRECTION.UP:
         head = [head[0], head[1] - 2]
         break
     }
     dots.push(head)
     dots.shift()
-    this.setState({
-      snakeDots: dots
-    })
+    setSnakeDots(dots)
   }
 
-  checkIfOutOfBorders() {
-    let head = this.state.snakeDots[this.state.snakeDots.length - 1]
-    if (head[0] >= 100 || head[1] >= 100 || head[0] < 0 || head[1] < 0) {
-      this.onGameOver()
-    }
+  const onOutOfBounds = () => {
+    let head = snakeDots[snakeDots.length - 1]
+    if (head[0] >= 100 || head[1] >= 100 || head[0] < 0 || head[1] < 0)
+      onGameOver()
   }
 
-  checkIfCollapsed() {
-    let snake = [...this.state.snakeDots]
+  const onCollapse = () => {
+    let snake = [...snakeDots]
     let head = snake[snake.length - 1]
     snake.pop()
     snake.forEach((dot) => {
-      if (head[0] == dot[0] && head[1] == dot[1]) {
-        this.onGameOver()
-      }
+      if (head[0] == dot[0] && head[1] == dot[1]) onGameOver()
     })
   }
 
-  checkIfEat() {
-    let head = this.state.snakeDots[this.state.snakeDots.length - 1]
-    let food = this.state.food
-    if (head[0] == food[0] && head[1] == food[1]) {
-      this.setState({
-        food: getRandomCoordinates()
-      })
-      this.enlargeSnake()
-      this.increaseSpeed()
+  const onEat = () => {
+    let head = snakeDots[snakeDots.length - 1]
+    if (head[0] === food[0] && head[1] === food[1]) {
+      setFood(getRandomCoordinates)
+      enlargeSnake()
+      increaseSpeed()
     }
   }
 
-  enlargeSnake() {
-    let newSnake = [...this.state.snakeDots]
+  const enlargeSnake = () => {
+    let newSnake = [...snakeDots]
     newSnake.unshift([])
-    this.setState({
-      snakeDots: newSnake
-    })
+    setSnakeDots(newSnake)
   }
 
-  increaseSpeed() {
-    if (this.state.speed > 10) {
-      this.setState({
-        speed: this.state.speed - 10
-      })
+  const increaseSpeed = () => {
+    if (speed > 10) {
+      setSpeed(speed - 10)
     }
   }
 
-  onGameOver() {
-    alert(`Game Over. Snake length is ${this.state.snakeDots.length}`)
-    this.setState(initialState)
+  const onGameOver = () => {
+    setFood(initialState.food)
+    setSpeed(initialState.speed)
+    setGameOver(!initialState.gameOver)
+    setDirection(initialState.direction)
+    setSnakeDots(initialState.snakeDots)
   }
 
-  render() {
-    return (
-      <div className="game-area">
-        <Snake snakeDots={this.state.snakeDots} />
-        <Food dot={this.state.food} />
-      </div>
-    )
-  }
+  useInterval(moveSnake, speed)
+
+  return <Board food={food} snakeDots={snakeDots} />
 }
-
-export default App
