@@ -12,6 +12,8 @@ export default (props) => (
     <style jsx global>
       {`
         body {
+          max-height: 100vh;
+          overflow: hidden;
           margin: 0;
           font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
             Helvetica, sans-serif;
