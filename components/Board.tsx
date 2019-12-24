@@ -5,7 +5,7 @@ import Snake from './Snake'
 import Food from './Food'
 
 export default (props) => (
-  <div className="game-board">
+  <div className="paper game-board">
     <Snake snakeDots={props.snakeDots} />
     <Food dot={props.food} />
 
@@ -15,7 +15,6 @@ export default (props) => (
         margin: 50px auto;
         width: 30vw;
         height: 30vw;
-        border: 2px solid #000;
       }
     `}</style>
   </div>
