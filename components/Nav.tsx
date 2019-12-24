@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import GithubCorner from 'react-github-corner'
 
 const links = [
   { href: 'https://zeit.co/now', label: 'ZEIT', key: '' },
@@ -11,6 +12,7 @@ const links = [
 
 const Nav = () => (
   <nav>
+    <GithubCorner href="https://github.com/nfuad/snakely" />
     <ul>
       <li>
         <Link href="/">
