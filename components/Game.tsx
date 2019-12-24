@@ -14,6 +14,7 @@ import DIRECTION from '../constants/direction'
 const initialState = {
   food: getRandomCoordinates,
   speed: 200,
+  paused: true,
   direction: DIRECTION.RIGHT,
   snakeDots: [
     [0, 0],
@@ -22,23 +23,39 @@ const initialState = {
   gameOver: false
 }
 
+// declare sound effects variables
+let bummerSound, eatSound, moveSound
+
 export default () => {
   const [food, setFood] = React.useState(initialState.food)
   const [speed, setSpeed] = React.useState(initialState.speed)
+  const [paused, setPaused] = React.useState(initialState.paused)
   const [gameOver, setGameOver] = React.useState(initialState.gameOver)
   const [direction, setDirection] = React.useState(initialState.direction)
   const [snakeDots, setSnakeDots] = React.useState(initialState.snakeDots)
 
   React.useEffect(() => {
+    // initialize sound effects
+    bummerSound = new Audio('/sounds/bummer.mp3')
+    eatSound = new Audio('/sounds/eat.mp3')
+    moveSound = new Audio('/sounds/move.mp3')
+
+    // assign document.onkeydown to custom onKeyDown
     document.onkeydown = onKeyDown
-    onOutOfBounds()
-    onCollapse()
-    onEat()
+    didGoOutOfBounds()
+    didCollapse()
+    didEat()
   })
 
   const onKeyDown = (e) => {
     e = e || window.event
+
+    setPaused(false)
+
     switch (e.keyCode) {
+      case 32:
+        setPaused(!paused)
+        break
       case 38:
         setDirection(DIRECTION.UP)
         break
@@ -52,37 +69,45 @@ export default () => {
         setDirection(DIRECTION.RIGHT)
         break
     }
+
+    // play a swoosh sound on move
+    moveSound.play()
   }
 
+  // move snake in the right direction
   const moveSnake = () => {
-    let dots = [...snakeDots]
-    let head = dots[dots.length - 1]
-    switch (direction) {
-      case DIRECTION.RIGHT:
-        head = [head[0] + 2, head[1]]
-        break
-      case DIRECTION.LEFT:
-        head = [head[0] - 2, head[1]]
-        break
-      case DIRECTION.DOWN:
-        head = [head[0], head[1] + 2]
-        break
-      case DIRECTION.UP:
-        head = [head[0], head[1] - 2]
-        break
+    if (!paused) {
+      let dots = [...snakeDots]
+      let head = dots[dots.length - 1]
+      switch (direction) {
+        case DIRECTION.RIGHT:
+          head = [head[0] + 2, head[1]]
+          break
+        case DIRECTION.LEFT:
+          head = [head[0] - 2, head[1]]
+          break
+        case DIRECTION.DOWN:
+          head = [head[0], head[1] + 2]
+          break
+        case DIRECTION.UP:
+          head = [head[0], head[1] - 2]
+          break
+      }
+      dots.push(head)
+      dots.shift()
+      setSnakeDots(dots)
     }
-    dots.push(head)
-    dots.shift()
-    setSnakeDots(dots)
   }
 
-  const onOutOfBounds = () => {
+  // check if the snake hit any boundary
+  const didGoOutOfBounds = () => {
     let head = snakeDots[snakeDots.length - 1]
     if (head[0] >= 100 || head[1] >= 100 || head[0] < 0 || head[1] < 0)
       onGameOver()
   }
 
-  const onCollapse = () => {
+  // check if the snake collapsed on itself
+  const didCollapse = () => {
     let snake = [...snakeDots]
     let head = snake[snake.length - 1]
     snake.pop()
@@ -91,12 +116,14 @@ export default () => {
     })
   }
 
-  const onEat = () => {
+  // check if the sake ate the food
+  const didEat = () => {
     let head = snakeDots[snakeDots.length - 1]
     if (head[0] === food[0] && head[1] === food[1]) {
       setFood(getRandomCoordinates)
       enlargeSnake()
       increaseSpeed()
+      eatSound.play()
     }
   }
 
@@ -113,8 +140,13 @@ export default () => {
   }
 
   const onGameOver = () => {
+    // play bummer sound
+    bummerSound.play()
+
+    // reset all states
     setFood(initialState.food)
     setSpeed(initialState.speed)
+    setPaused(initialState.paused)
     setGameOver(!initialState.gameOver)
     setDirection(initialState.direction)
     setSnakeDots(initialState.snakeDots)
