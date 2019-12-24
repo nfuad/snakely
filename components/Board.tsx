@@ -13,8 +13,8 @@ export default (props) => (
       .game-board {
         position: relative;
         margin: 50px auto;
-        width: 600px;
-        height: 600px;
+        width: 30vw;
+        height: 30vw;
         border: 2px solid #000;
       }
     `}</style>
