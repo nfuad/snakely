@@ -8,7 +8,8 @@ export default (props) => (
           position: absolute;
           width: 2%;
           height: 2%;
-          background: red;
+          background: tomato;
+          border-radius: 30%;
           border: 1px solid #fff;
           z-index: 1;
           left: ${props.dot[0]}%;
