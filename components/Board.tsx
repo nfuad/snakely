@@ -4,10 +4,10 @@ import * as React from 'react'
 import Snake from './Snake'
 import Food from './Food'
 
-export default (props) => (
+export default ({ data }) => (
   <div className="paper game-board">
-    <Snake snakeDots={props.snakeDots} />
-    <Food dot={props.food} />
+    <Snake snakeDots={data.snakeDots} />
+    <Food dot={data.food} />
 
     <style jsx global>{`
       .game-board {
