@@ -22,8 +22,7 @@ export default () => {
     snakeDots: [
       [0, 0],
       [2, 0]
-    ],
-    gameOver: false
+    ]
   }
 
   // declare sound effects variables
@@ -33,7 +32,6 @@ export default () => {
   const [food, setFood] = React.useState(initialState.food)
   const [speed, setSpeed] = React.useState(initialState.speed)
   const [paused, setPaused] = React.useState(initialState.paused)
-  const [gameOver, setGameOver] = React.useState(initialState.gameOver)
   const [direction, setDirection] = React.useState(initialState.direction)
   const [snakeDots, setSnakeDots] = React.useState(initialState.snakeDots)
 
@@ -153,7 +151,6 @@ export default () => {
     setFood(initialState.food)
     setSpeed(initialState.speed)
     setPaused(initialState.paused)
-    setGameOver(!initialState.gameOver)
     setDirection(initialState.direction)
     setSnakeDots(initialState.snakeDots)
 
