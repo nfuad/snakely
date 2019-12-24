@@ -6,33 +6,39 @@ import Board from './Board'
 
 // helper functions
 import getRandomCoordinates from '../utils/getRandomCoordinates'
+import setBestScore from '../utils/setBestScore'
+import showGameOverModal from '../utils/showGameOverModal'
 
 // constants
 import DIRECTION from '../constants/direction'
 
-// initial state of the game
-const initialState = {
-  food: getRandomCoordinates,
-  speed: 200,
-  paused: true,
-  direction: DIRECTION.RIGHT,
-  snakeDots: [
-    [0, 0],
-    [2, 0]
-  ],
-  gameOver: false
-}
-
-// declare sound effects variables
-let bummerSound, eatSound, moveSound
-
 export default () => {
+  // initial state of the game
+  const initialState = {
+    food: getRandomCoordinates,
+    speed: 200,
+    paused: true,
+    direction: DIRECTION.RIGHT,
+    snakeDots: [
+      [0, 0],
+      [2, 0]
+    ],
+    gameOver: false
+  }
+
+  // declare sound effects variables
+  let bummerSound, eatSound, moveSound
+
+  // initialize states
   const [food, setFood] = React.useState(initialState.food)
   const [speed, setSpeed] = React.useState(initialState.speed)
   const [paused, setPaused] = React.useState(initialState.paused)
   const [gameOver, setGameOver] = React.useState(initialState.gameOver)
   const [direction, setDirection] = React.useState(initialState.direction)
   const [snakeDots, setSnakeDots] = React.useState(initialState.snakeDots)
+
+  // subtract 2 default snake dots
+  const points = snakeDots.length - 2
 
   React.useEffect(() => {
     // initialize sound effects
@@ -150,9 +156,15 @@ export default () => {
     setGameOver(!initialState.gameOver)
     setDirection(initialState.direction)
     setSnakeDots(initialState.snakeDots)
+
+    // set bestScore in localStorage
+    setBestScore(points)
+
+    // show a modal
+    showGameOverModal(points)
   }
 
   useInterval(moveSnake, speed)
 
-  return <Board food={food} snakeDots={snakeDots} />
+  return <Board data={{ food, snakeDots, points }} />
 }
