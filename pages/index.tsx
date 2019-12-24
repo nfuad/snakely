@@ -2,11 +2,10 @@ import * as React from 'react'
 
 // custom components
 import Game from '../components/Game'
-import Nav from '../components/Nav'
+import Layout from '../components/Layout'
 
 export default () => (
-  <>
-    <Nav />
+  <Layout>
     <Game />
-  </>
+  </Layout>
 )
