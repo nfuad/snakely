@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board component should render correctly 1`] = `
+<div
+  className="paper game-board"
+>
+  <_default
+    snakeDots={
+      Array [
+        Array [
+          0,
+          0,
+        ],
+        Array [
+          2,
+          0,
+        ],
+      ]
+    }
+  />
+  <_default
+    dot={
+      Array [
+        0,
+        1,
+      ]
+    }
+  />
+  <style
+    global={true}
+    jsx={true}
+  >
+    
+      .game-board {
+        position: relative;
+        margin: 50px auto;
+        width: 30vw;
+        height: 30vw;
+      }
+    
+  </style>
+</div>
+`;
