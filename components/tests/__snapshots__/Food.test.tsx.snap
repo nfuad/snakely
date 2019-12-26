@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Food component matches the snapshot 1`] = `
+<_default
+  dot={
+    Array [
+      0,
+      1,
+    ]
+  }
+>
+  <div
+    className="jsx-2133318913 food"
+  >
+    <JSXStyle
+      dynamic={
+        Array [
+          0,
+          1,
+        ]
+      }
+      id="1138619144"
+    />
+  </div>
+</_default>
+`;
+
+exports[`Food component updates via props 1`] = `
+<_default
+  dot={
+    Array [
+      0,
+      1,
+    ]
+  }
+>
+  <div
+    className="jsx-2133318913 food"
+  >
+    <JSXStyle
+      dynamic={
+        Array [
+          0,
+          1,
+        ]
+      }
+      id="1138619144"
+    />
+  </div>
+</_default>
+`;
+
+exports[`Food component updates via props 2`] = `
+<_default
+  dot={
+    Array [
+      1,
+      0,
+    ]
+  }
+>
+  <div
+    className="jsx-2981255425 food"
+  >
+    <JSXStyle
+      dynamic={
+        Array [
+          1,
+          0,
+        ]
+      }
+      id="1138619144"
+    />
+  </div>
+</_default>
+`;

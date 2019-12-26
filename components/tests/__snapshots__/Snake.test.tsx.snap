@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snake component matches the snapshot 1`] = `
+<_default
+  snakeDots={
+    Array [
+      Array [
+        0,
+        0,
+      ],
+      Array [
+        2,
+        0,
+      ],
+    ]
+  }
+>
+  <div>
+    <div
+      className="jsx-1162698439 snake-dot"
+      key="0"
+      style={
+        Object {
+          "left": "0%",
+          "top": "0%",
+        }
+      }
+    >
+      <JSXStyle
+        id="1162698439"
+      />
+    </div>
+    <div
+      className="jsx-1162698439 snake-dot"
+      key="1"
+      style={
+        Object {
+          "left": "2%",
+          "top": "0%",
+        }
+      }
+    >
+      <JSXStyle
+        id="1162698439"
+      />
+    </div>
+  </div>
+</_default>
+`;
+
+exports[`Snake component updates via props 1`] = `
+<_default
+  snakeDots={
+    Array [
+      Array [
+        0,
+        0,
+      ],
+      Array [
+        2,
+        0,
+      ],
+    ]
+  }
+>
+  <div>
+    <div
+      className="jsx-1162698439 snake-dot"
+      key="0"
+      style={
+        Object {
+          "left": "0%",
+          "top": "0%",
+        }
+      }
+    >
+      <JSXStyle
+        id="1162698439"
+      />
+    </div>
+    <div
+      className="jsx-1162698439 snake-dot"
+      key="1"
+      style={
+        Object {
+          "left": "2%",
+          "top": "0%",
+        }
+      }
+    >
+      <JSXStyle
+        id="1162698439"
+      />
+    </div>
+  </div>
+</_default>
+`;
+
+exports[`Snake component updates via props 2`] = `
+<_default
+  snakeDots={
+    Array [
+      Array [
+        0,
+        2,
+      ],
+      Array [
+        2,
+        2,
+      ],
+    ]
+  }
+>
+  <div>
+    <div
+      className="jsx-1162698439 snake-dot"
+      key="0"
+      style={
+        Object {
+          "left": "0%",
+          "top": "2%",
+        }
+      }
+    >
+      <JSXStyle
+        id="1162698439"
+      />
+    </div>
+    <div
+      className="jsx-1162698439 snake-dot"
+      key="1"
+      style={
+        Object {
+          "left": "2%",
+          "top": "2%",
+        }
+      }
+    >
+      <JSXStyle
+        id="1162698439"
+      />
+    </div>
+  </div>
+</_default>
+`;

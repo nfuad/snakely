@@ -1,12 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Board component should render correctly 1`] = `
-<div
-  className="paper game-board"
->
-  <_default
-    snakeDots={
-      Array [
+exports[`Board component matches the snapshot 1`] = `
+<_default
+  data={
+    Object {
+      "food": Array [
+        0,
+        1,
+      ],
+      "snakeDots": Array [
         Array [
           0,
           0,
@@ -15,29 +17,297 @@ exports[`Board component should render correctly 1`] = `
           2,
           0,
         ],
-      ]
+      ],
     }
-  />
-  <_default
-    dot={
-      Array [
+  }
+>
+  <div
+    className="jsx-3514393862 paper game-board"
+  >
+    <_default
+      snakeDots={
+        Array [
+          Array [
+            0,
+            0,
+          ],
+          Array [
+            2,
+            0,
+          ],
+        ]
+      }
+    >
+      <div>
+        <div
+          className="jsx-1162698439 snake-dot"
+          key="0"
+          style={
+            Object {
+              "left": "0%",
+              "top": "0%",
+            }
+          }
+        >
+          <JSXStyle
+            id="1162698439"
+          />
+        </div>
+        <div
+          className="jsx-1162698439 snake-dot"
+          key="1"
+          style={
+            Object {
+              "left": "2%",
+              "top": "0%",
+            }
+          }
+        >
+          <JSXStyle
+            id="1162698439"
+          />
+        </div>
+      </div>
+    </_default>
+    <_default
+      dot={
+        Array [
+          0,
+          1,
+        ]
+      }
+    >
+      <div
+        className="jsx-2133318913 food"
+      >
+        <JSXStyle
+          dynamic={
+            Array [
+              0,
+              1,
+            ]
+          }
+          id="1138619144"
+        />
+      </div>
+    </_default>
+    <JSXStyle
+      id="3514393862"
+    />
+  </div>
+</_default>
+`;
+
+exports[`Board component updates via props 1`] = `
+<_default
+  data={
+    Object {
+      "food": Array [
         0,
         1,
-      ]
+      ],
+      "snakeDots": Array [
+        Array [
+          0,
+          0,
+        ],
+        Array [
+          2,
+          0,
+        ],
+      ],
     }
-  />
-  <style
-    global={true}
-    jsx={true}
+  }
+>
+  <div
+    className="jsx-3514393862 paper game-board"
   >
-    
-      .game-board {
-        position: relative;
-        margin: 50px auto;
-        width: 30vw;
-        height: 30vw;
+    <_default
+      snakeDots={
+        Array [
+          Array [
+            0,
+            0,
+          ],
+          Array [
+            2,
+            0,
+          ],
+        ]
       }
-    
-  </style>
-</div>
+    >
+      <div>
+        <div
+          className="jsx-1162698439 snake-dot"
+          key="0"
+          style={
+            Object {
+              "left": "0%",
+              "top": "0%",
+            }
+          }
+        >
+          <JSXStyle
+            id="1162698439"
+          />
+        </div>
+        <div
+          className="jsx-1162698439 snake-dot"
+          key="1"
+          style={
+            Object {
+              "left": "2%",
+              "top": "0%",
+            }
+          }
+        >
+          <JSXStyle
+            id="1162698439"
+          />
+        </div>
+      </div>
+    </_default>
+    <_default
+      dot={
+        Array [
+          0,
+          1,
+        ]
+      }
+    >
+      <div
+        className="jsx-2133318913 food"
+      >
+        <JSXStyle
+          dynamic={
+            Array [
+              0,
+              1,
+            ]
+          }
+          id="1138619144"
+        />
+      </div>
+    </_default>
+    <JSXStyle
+      id="3514393862"
+    />
+  </div>
+</_default>
+`;
+
+exports[`Board component updates via props 2`] = `
+<_default
+  data={
+    Object {
+      "food": Array [
+        0,
+        1,
+      ],
+      "snakeDots": Array [
+        Array [
+          0,
+          0,
+        ],
+        Array [
+          2,
+          0,
+        ],
+      ],
+    }
+  }
+  food={
+    Array [
+      1,
+      0,
+    ]
+  }
+  snakeDots={
+    Array [
+      Array [
+        0,
+        2,
+      ],
+      Array [
+        2,
+        2,
+      ],
+    ]
+  }
+>
+  <div
+    className="jsx-3514393862 paper game-board"
+  >
+    <_default
+      snakeDots={
+        Array [
+          Array [
+            0,
+            0,
+          ],
+          Array [
+            2,
+            0,
+          ],
+        ]
+      }
+    >
+      <div>
+        <div
+          className="jsx-1162698439 snake-dot"
+          key="0"
+          style={
+            Object {
+              "left": "0%",
+              "top": "0%",
+            }
+          }
+        >
+          <JSXStyle
+            id="1162698439"
+          />
+        </div>
+        <div
+          className="jsx-1162698439 snake-dot"
+          key="1"
+          style={
+            Object {
+              "left": "2%",
+              "top": "0%",
+            }
+          }
+        >
+          <JSXStyle
+            id="1162698439"
+          />
+        </div>
+      </div>
+    </_default>
+    <_default
+      dot={
+        Array [
+          0,
+          1,
+        ]
+      }
+    >
+      <div
+        className="jsx-2133318913 food"
+      >
+        <JSXStyle
+          dynamic={
+            Array [
+              0,
+              1,
+            ]
+          }
+          id="1138619144"
+        />
+      </div>
+    </_default>
+    <JSXStyle
+      id="3514393862"
+    />
+  </div>
+</_default>
 `;
