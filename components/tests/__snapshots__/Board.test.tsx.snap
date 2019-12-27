@@ -22,7 +22,7 @@ exports[`Board component matches the snapshot 1`] = `
   }
 >
   <div
-    className="jsx-3514393862 paper game-board"
+    className="jsx-1691549990 paper game-board"
   >
     <_default
       snakeDots={
@@ -91,10 +91,26 @@ exports[`Board component matches the snapshot 1`] = `
         />
       </div>
     </_default>
-    <JSXStyle
-      id="3514393862"
-    />
   </div>
+  <_default>
+    <div>
+      <h3>
+        Stats
+      </h3>
+      <h4>
+        Points: 
+      </h4>
+      <h4>
+        Best Score: 
+        <_default>
+          NaN
+        </_default>
+      </h4>
+    </div>
+  </_default>
+  <JSXStyle
+    id="1691549990"
+  />
 </_default>
 `;
 
@@ -120,7 +136,7 @@ exports[`Board component updates via props 1`] = `
   }
 >
   <div
-    className="jsx-3514393862 paper game-board"
+    className="jsx-1691549990 paper game-board"
   >
     <_default
       snakeDots={
@@ -189,10 +205,26 @@ exports[`Board component updates via props 1`] = `
         />
       </div>
     </_default>
-    <JSXStyle
-      id="3514393862"
-    />
   </div>
+  <_default>
+    <div>
+      <h3>
+        Stats
+      </h3>
+      <h4>
+        Points: 
+      </h4>
+      <h4>
+        Best Score: 
+        <_default>
+          NaN
+        </_default>
+      </h4>
+    </div>
+  </_default>
+  <JSXStyle
+    id="1691549990"
+  />
 </_default>
 `;
 
@@ -236,7 +268,7 @@ exports[`Board component updates via props 2`] = `
   }
 >
   <div
-    className="jsx-3514393862 paper game-board"
+    className="jsx-1691549990 paper game-board"
   >
     <_default
       snakeDots={
@@ -305,9 +337,25 @@ exports[`Board component updates via props 2`] = `
         />
       </div>
     </_default>
-    <JSXStyle
-      id="3514393862"
-    />
   </div>
+  <_default>
+    <div>
+      <h3>
+        Stats
+      </h3>
+      <h4>
+        Points: 
+      </h4>
+      <h4>
+        Best Score: 
+        <_default>
+          NaN
+        </_default>
+      </h4>
+    </div>
+  </_default>
+  <JSXStyle
+    id="1691549990"
+  />
 </_default>
 `;
