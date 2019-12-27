@@ -49,6 +49,9 @@ export default () => {
     didGoOutOfBounds()
     didCollapse()
     didEat()
+
+    // set bestScore in localStorage
+    setBestScore(points)
   })
 
   const onKeyDown = (e) => {
@@ -154,14 +157,11 @@ export default () => {
     setDirection(initialState.direction)
     setSnakeDots(initialState.snakeDots)
 
-    // set bestScore in localStorage
-    setBestScore(points)
-
     // show a modal
     showGameOverModal(points)
   }
 
   useInterval(moveSnake, speed)
 
-  return <Board data={{ food, snakeDots, points }} />
+  return <Board data={{ food, snakeDots, points, paused }} />
 }
