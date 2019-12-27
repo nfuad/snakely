@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 export default (points) => {
   Swal.fire({
     title: 'Oops... Game Over',
-    text: `Points: ${points} 
+    html: `Points: ${points} <br/>
             Best Score ${localStorage.getItem('bestScore')}
       `,
     confirmButtonText: 'Play again!',
