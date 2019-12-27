@@ -14,7 +14,7 @@ export default (props) => (
       />
     </Head>
     <Nav />
-    {props.children}
+    <div className="wrapper">{props.children}</div>
     <Footer />
     <style jsx global>
       {`
@@ -24,6 +24,21 @@ export default (props) => (
           margin: 0;
           font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
             Helvetica, sans-serif;
+        }
+
+        .wrapper {
+          display: flex;
+          height: 80vh;
+          justify-content: space-evenly;
+          align-items: center;
+        }
+
+        h3 {
+          margin-top: 0;
+        }
+
+        h4 {
+          margin: 0;
         }
       `}
     </style>
